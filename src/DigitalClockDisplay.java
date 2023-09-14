@@ -5,6 +5,7 @@ import java.util.Observer;
 public class DigitalClockDisplay implements Observer {
     private String clockTime;
 
+    // update what the Observer receives
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof String) {
