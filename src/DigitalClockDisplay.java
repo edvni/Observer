@@ -10,6 +10,8 @@ public class DigitalClockDisplay implements Observer {
         if (arg instanceof String) {
             clockTime = (String) arg;
             displayTime();
+            System.out.println("---- ClockDisplay received an update from the Clock ----");
+            System.out.println("---- Updated time: " + clockTime + " ----");
         }
     }
 

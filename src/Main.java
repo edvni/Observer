@@ -11,28 +11,44 @@ public class Main {
 
         System.out.println("Starting clock...");
 
-        // simulate update of clock time with stopwatch
+        // set time to 12:30:45
+        clock.setTime(12, 30, 45);
+
+        // simulate time progression
         Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                String currentTime = getCurrentTime();
-                clock.setTime(currentTime);
+                advanceTime(clock);
             }
-        }, 0, 1000); // update time each second
+        }, 1000, 1000); // update time each second
 
-        // stop the watch at the end
         try {
-            Thread.sleep(5000); // keep program running for 5 sec
+            Thread.sleep(5000);
             timer.cancel(); // stop the timer
-            System.out.println("Clock stopped.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("Clock stopped.");
     }
 
-    private static String getCurrentTime() {
-        long currentTimeMillis = System.currentTimeMillis();
-        return Long.toString(currentTimeMillis);
+    // simulate progression of time in DigitalClock class
+    private static void advanceTime(DigitalClock clock) {
+        int hours = clock.getHours();
+        int minutes = clock.getMinutes();
+        int seconds = clock.getSeconds() + 1;
+
+        if (seconds == 60) {
+            seconds = 0;
+            minutes += 1;
+            if (minutes == 60) {
+                minutes = 0;
+                hours += 1;
+                if (hours == 24) {
+                    hours = 0;
+                }
+            }
+        }
+        clock.setTime(hours, minutes, seconds);
     }
 }
