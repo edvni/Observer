@@ -26,11 +26,12 @@ public class Main {
         try {
             Thread.sleep(5000);
             timer.cancel(); // stop the timer
+            System.out.println("Clock stopped.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Clock stopped.");
     }
+
 
     // simulate progression of time in DigitalClock class
     private static void advanceTime(DigitalClock clock) {

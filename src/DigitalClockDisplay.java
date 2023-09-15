@@ -17,6 +17,6 @@ public class DigitalClockDisplay implements Observer {
     }
 
     public void displayTime() {
-        System.out.println("Kello: " + clockTime);
+        System.out.println("The time: " + clockTime);
     }
 }
